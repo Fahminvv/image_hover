@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image and Text Change</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: lightblue;
+        }
+
+        #content {
+            margin: 50px auto;
+            padding: 20px;
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 250px;
+            height: 180px;
+        }
+
+        h2 {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+        <h2 id="heading">Welcome to Nature</h2>
+
+        <img id="picture"
+             src="https://placehold.co/250x180/90be6d/ffffff?text=Original+Image"
+             alt="Nature image">
+    </div>
+
+    <script>
+        var content = document.getElementById("content");
+        var picture = document.getElementById("picture");
+        var heading = document.getElementById("heading");
+
+        content.addEventListener("mouseover", function() {
+            picture.src =
+                "https://placehold.co/250x180/457b9d/ffffff?text=New+Image";
+
+            heading.style.display = "none";
+
+            var newHeading = document.createElement("h2");
+            newHeading.id = "newHeading";
+            newHeading.innerHTML = "Explore Nature";
+
+            content.insertBefore(newHeading, picture);
+        });
+
+        content.addEventListener("mouseout", function() {
+            picture.src =
+                "https://placehold.co/250x180/90be6d/ffffff?text=Original+Image";
+
+            heading.style.display = "block";
+
+            var newHeading = document.getElementById("newHeading");
+
+            if (newHeading) {
+                newHeading.remove();
+            }
+        });
+    </script>
+
+</body>
+</html>
